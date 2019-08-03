@@ -11,6 +11,11 @@
 		FB24C7AE22F60DA600F4A540 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24C7AD22F60DA600F4A540 /* ViewController.swift */; };
 		FB24C7B322F60DA600F4A540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB24C7B222F60DA600F4A540 /* Assets.xcassets */; };
 		FB24C7B622F60DA600F4A540 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB24C7B422F60DA600F4A540 /* LaunchScreen.storyboard */; };
+		FB24C7BE22F611D000F4A540 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24C7BD22F611D000F4A540 /* ToDoItem.swift */; };
+		FB61009B22F617A8002E8635 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61009A22F617A8002E8635 /* AppCoordinator.swift */; };
+		FB61009D22F6194A002E8635 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61009C22F6194A002E8635 /* Coordinator.swift */; };
+		FB6100A022F619DB002E8635 /* ToDoListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB61009F22F619DB002E8635 /* ToDoListCoordinator.swift */; };
+		FB6100A222F61A29002E8635 /* ToDoDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6100A122F61A29002E8635 /* ToDoDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		FB24C7B222F60DA600F4A540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB24C7B522F60DA600F4A540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB24C7B722F60DA600F4A540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB24C7BD22F611D000F4A540 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		FB61009A22F617A8002E8635 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		FB61009C22F6194A002E8635 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FB61009F22F619DB002E8635 /* ToDoListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCoordinator.swift; sourceTree = "<group>"; };
+		FB6100A122F61A29002E8635 /* ToDoDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +62,26 @@
 		FB24C7AA22F60DA600F4A540 /* ToDoListMVVMC */ = {
 			isa = PBXGroup;
 			children = (
+				FB61009E22F619BB002E8635 /* Coordinators */,
 				FB24C7AB22F60DA600F4A540 /* AppDelegate.swift */,
 				FB24C7AD22F60DA600F4A540 /* ViewController.swift */,
 				FB24C7B222F60DA600F4A540 /* Assets.xcassets */,
 				FB24C7B422F60DA600F4A540 /* LaunchScreen.storyboard */,
 				FB24C7B722F60DA600F4A540 /* Info.plist */,
+				FB24C7BD22F611D000F4A540 /* ToDoItem.swift */,
 			);
 			path = ToDoListMVVMC;
+			sourceTree = "<group>";
+		};
+		FB61009E22F619BB002E8635 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FB61009C22F6194A002E8635 /* Coordinator.swift */,
+				FB61009A22F617A8002E8635 /* AppCoordinator.swift */,
+				FB61009F22F619DB002E8635 /* ToDoListCoordinator.swift */,
+				FB6100A122F61A29002E8635 /* ToDoDetailCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6100A022F619DB002E8635 /* ToDoListCoordinator.swift in Sources */,
+				FB61009B22F617A8002E8635 /* AppCoordinator.swift in Sources */,
+				FB6100A222F61A29002E8635 /* ToDoDetailCoordinator.swift in Sources */,
 				FB24C7AE22F60DA600F4A540 /* ViewController.swift in Sources */,
+				FB61009D22F6194A002E8635 /* Coordinator.swift in Sources */,
 				FB24C7AC22F60DA600F4A540 /* AppDelegate.swift in Sources */,
+				FB24C7BE22F611D000F4A540 /* ToDoItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
