@@ -6,11 +6,17 @@
 //  Copyright © 2019 Ten Labs. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class ToDoListCoordinator: Coordinator {
     
     private(set) var childCoordinators: [Coordinator] = []
+    
+    let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
+    }
     
     func start() {}
 }
