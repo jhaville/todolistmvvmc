@@ -13,6 +13,7 @@ final class ToDoListCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     
     let window: UIWindow
+    private(set) var navigationController: UINavigationController?
     
     init(window: UIWindow) {
         self.window = window
@@ -20,8 +21,29 @@ final class ToDoListCoordinator: Coordinator {
     
     func start() {
         let toDoListViewModel = ToDoListViewModel(listTitle: "To Do List", toDoItems: ToDoItem.testData)
+        toDoListViewModel.coordinatorDelegate = self
         let toDoListDataSource = ToDoListDataSource(viewModel: toDoListViewModel)
         let toDoListViewController = ToDoListViewController(toDoListViewModel: toDoListViewModel, dataSource: toDoListDataSource)
-        window.rootViewController = UINavigationController(rootViewController: toDoListViewController)
+        navigationController = UINavigationController(rootViewController: toDoListViewController)
+        navigationController?.navigationBar.tintColor = .black
+        window.rootViewController = navigationController
+    }
+}
+
+extension ToDoListCoordinator: ToDoListViewModelCoordinatorDelegate {
+    func toDoListViewModel(_ viewModel: ToDoListViewModel, didTapMoreDetailsForItemViewModel itemViewModel: ToDoItemViewModel) {
+        if let navigationController = navigationController {
+            let toDoDetailCoordinator = ToDoDetailCoordinator(navigationController: navigationController, viewModel: itemViewModel)
+            childCoordinators.append(toDoDetailCoordinator)
+            toDoDetailCoordinator.coordinatorDelegate = self
+            toDoDetailCoordinator.start()
+        }
+    }
+}
+
+extension ToDoListCoordinator: ToDoDetailCoordinatorDelegate {
+    func toDoDetailCoordinatorDidFinish(_ coordinator: ToDoDetailCoordinator) {
+        print("did finish")
+        childCoordinators.remove(at: childCoordinators.count - 1)
     }
 }

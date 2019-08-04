@@ -6,10 +6,17 @@
 //  Copyright © 2019 Ten Labs. All rights reserved.
 //
 
+protocol ToDoItemViewModelCoordinatorDelegate: class {
+    func toDoItemViewModelDidFinishShowing(_ viewModel: ToDoItemViewModel)
+}
+
 final class ToDoItemViewModel {
     private(set) var titleText: String
     private(set) var descriptionText: String
     private(set) var isCompleted: Bool
+    
+    weak var coordinatorDelegate: ToDoItemViewModelCoordinatorDelegate?
+    
     var imageName: String {
         return isCompleted ? "circle-filled" : "circle"
     }
@@ -24,6 +31,10 @@ final class ToDoItemViewModel {
     
     func toggledCompleted() {
         self.isCompleted = !self.isCompleted
+    }
+    
+    func finishedShowing() {
+        coordinatorDelegate?.toDoItemViewModelDidFinishShowing(self)
     }
 }
 

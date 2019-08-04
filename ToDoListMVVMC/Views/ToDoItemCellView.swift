@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ToDoItemCellViewDelegate: class {
+    func toDoItemCellViewDidTapStatusView(_ cell: UITableViewCell)
+    func toDoItemCellViewDidTapMoreDetails(_ cell: UITableViewCell)
+}
+
 final class ToDoItemCellView: UITableViewCell {
     
     static let identifier = "ToDoItemCellView"
@@ -19,6 +24,8 @@ final class ToDoItemCellView: UITableViewCell {
     let statusImageView = UIImageView()
     let horizontalStackView = UIStackView()
     let verticalStackView = UIStackView()
+    
+    weak var delegate: ToDoItemCellViewDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -47,6 +54,8 @@ final class ToDoItemCellView: UITableViewCell {
         viewDetailsButton.setTitleColor(.black, for: .normal)
         viewDetailsButton.semanticContentAttribute = .forceRightToLeft
         viewDetailsButton.tintColor = .black
+        viewDetailsButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedMoreDetails)))
+
 
         let chevronImage = #imageLiteral(resourceName: "right-chevron").withRenderingMode(.alwaysTemplate)
         viewDetailsButton.setImage(chevronImage, for: .normal)
@@ -62,7 +71,17 @@ final class ToDoItemCellView: UITableViewCell {
 
         statusContainerView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         statusContainerView.setContentHuggingPriority(.required, for: .horizontal)
+        
+        statusContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedStatus)))
 
+    }
+    
+    @objc private func tappedMoreDetails() {
+        delegate?.toDoItemCellViewDidTapMoreDetails(self)
+    }
+    
+    @objc private func tappedStatus() {
+        delegate?.toDoItemCellViewDidTapStatusView(self)
     }
     
     private func setupHierarchy() {

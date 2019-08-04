@@ -21,6 +21,7 @@
 		FB6100B022F7613A002E8635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB6100AF22F7613A002E8635 /* Assets.xcassets */; };
 		FB6100B222F76C3A002E8635 /* ToDoTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6100B122F76C3A002E8635 /* ToDoTableSectionHeaderView.swift */; };
 		FB6100B422F7783D002E8635 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6100B322F7783D002E8635 /* ViewConstants.swift */; };
+		FB6100B622F78EE4002E8635 /* ToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6100B522F78EE4002E8635 /* ToDoItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FB6100AF22F7613A002E8635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB6100B122F76C3A002E8635 /* ToDoTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		FB6100B322F7783D002E8635 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		FB6100B522F78EE4002E8635 /* ToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				FB6100AD22F624DA002E8635 /* ToDoItemCellView.swift */,
 				FB6100B122F76C3A002E8635 /* ToDoTableSectionHeaderView.swift */,
 				FB6100B322F7783D002E8635 /* ViewConstants.swift */,
+				FB6100B522F78EE4002E8635 /* ToDoItemViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				FB6100A922F61DBF002E8635 /* ToDoListViewModel.swift in Sources */,
 				FB6100A022F619DB002E8635 /* ToDoListCoordinator.swift in Sources */,
 				FB6100A222F61A29002E8635 /* ToDoDetailCoordinator.swift in Sources */,
+				FB6100B622F78EE4002E8635 /* ToDoItemViewController.swift in Sources */,
 				FB24C7AE22F60DA600F4A540 /* ToDoListViewController.swift in Sources */,
 				FB61009D22F6194A002E8635 /* Coordinator.swift in Sources */,
 				FB6100B422F7783D002E8635 /* ViewConstants.swift in Sources */,

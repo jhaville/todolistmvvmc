@@ -28,6 +28,8 @@ final class ToDoListDataSource: NSObject {
 extension ToDoListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let toDoItemCell = tableView.dequeueReusableCell(withIdentifier: ToDoItemCellView.identifier, for: indexPath) as! ToDoItemCellView
+        toDoItemCell.selectionStyle = .none
+        toDoItemCell.delegate = self
         toDoItemCell.update(with: viewModel.toDoItemViewModels[indexPath.row])
         return toDoItemCell
     }
@@ -43,7 +45,7 @@ extension ToDoListDataSource: UITableViewDataSource {
 
 extension ToDoListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.tappedToDoItemViewModel(at: indexPath)
+        viewModel.tappedMoreDetails(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -55,7 +57,7 @@ extension ToDoListDataSource: UITableViewDelegate {
     }
 }
 
-extension ToDoListDataSource: ToDoListViewModelDelegate {
+extension ToDoListDataSource: ToDoListViewModelDelegate, ToDoItemCellViewDelegate {
     func toDoListViewModel(_ viewModel: ToDoListViewModel, didUpdateToDoItemViewModelAtIndexPath IndexPath: IndexPath) {
         tableView?.reloadRows(at: [IndexPath], with: .automatic)
     }
@@ -63,4 +65,18 @@ extension ToDoListDataSource: ToDoListViewModelDelegate {
     func toDoListViewModelDidUpdate(_ viewModel: ToDoListViewModel) {
         tableView?.reloadData()
     }
+    
+    func toDoItemCellViewDidTapStatusView(_ cell: UITableViewCell) {
+        if let indexPath = tableView?.indexPath(for: cell) {
+            viewModel.tappedStatus(at: indexPath)
+        }
+    }
+    
+    func toDoItemCellViewDidTapMoreDetails(_ cell: UITableViewCell) {
+        if let indexPath = tableView?.indexPath(for: cell) {
+            viewModel.tappedMoreDetails(at: indexPath)
+        }
+    }
 }
+
+
