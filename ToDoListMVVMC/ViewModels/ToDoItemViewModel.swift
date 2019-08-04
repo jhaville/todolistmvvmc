@@ -6,14 +6,12 @@
 //  Copyright © 2019 Ten Labs. All rights reserved.
 //
 
-import Foundation
-
 final class ToDoItemViewModel {
     private(set) var titleText: String
     private(set) var descriptionText: String
     private(set) var isCompleted: Bool
     var imageName: String {
-        return isCompleted ? "" : ""
+        return isCompleted ? "circle-filled" : "circle"
     }
 
     init(toDoItem: ToDoItem) {

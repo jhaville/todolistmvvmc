@@ -11,10 +11,15 @@ import UIKit
 class ToDoListViewController: UIViewController {
 
     let toDoListViewModel: ToDoListViewModel
-    
-    init(toDoListViewModel: ToDoListViewModel) {
+    let toDoListDataSource: ToDoListDataSource
+    let toDoListTableView: UITableView
+
+    init(toDoListViewModel: ToDoListViewModel, dataSource: ToDoListDataSource) {
         self.toDoListViewModel = toDoListViewModel
+        self.toDoListDataSource = dataSource
+        self.toDoListTableView = UITableView()
         super.init(nibName: nil, bundle: nil)
+        dataSource.tableView = toDoListTableView
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,9 +28,26 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        setupViews()
+        setupHierarchy()
+        setupConstraints()
     }
-
-
+    
+    private func setupViews() {
+        toDoListTableView.translatesAutoresizingMaskIntoConstraints = false
+        toDoListTableView.tableFooterView = UIView()
+        toDoListTableView.register(ToDoItemCellView.self, forCellReuseIdentifier: ToDoItemCellView.identifier)
+        navigationItem.title = toDoListViewModel.listTitle
+    }
+    
+    private func setupHierarchy() {
+        view.addSubview(toDoListTableView)
+    }
+    
+    private func setupConstraints() {
+        toDoListTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        toDoListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        toDoListTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        toDoListTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
 }
-

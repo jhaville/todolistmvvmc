@@ -19,8 +19,9 @@ final class ToDoListCoordinator: Coordinator {
     }
     
     func start() {
-        let toDoListViewModel = ToDoListViewModel(listTitle: "Weekend To Do List", toDoItems: ToDoItem.testData)
-        let toDoListViewController = ToDoListViewController(toDoListViewModel: toDoListViewModel)
-        window.rootViewController = toDoListViewController
+        let toDoListViewModel = ToDoListViewModel(listTitle: "To Do List", toDoItems: ToDoItem.testData)
+        let toDoListDataSource = ToDoListDataSource(viewModel: toDoListViewModel)
+        let toDoListViewController = ToDoListViewController(toDoListViewModel: toDoListViewModel, dataSource: toDoListDataSource)
+        window.rootViewController = UINavigationController(rootViewController: toDoListViewController)
     }
 }

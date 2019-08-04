@@ -15,12 +15,6 @@ struct ToDoItem {
 }
 
 extension ToDoItem {
-    mutating func setCompleted(_ completed: Bool) {
-        isCompleted = completed
-    }
-}
-
-extension ToDoItem {
     static var testData: [ToDoItem] {
         let titles = ["Walk the dog", "Take out the rubbish", "Tidy the room", "Finish the report"]
         return titles.map { ToDoItem(title: $0, description: $0 + " description", isCompleted: false) }
